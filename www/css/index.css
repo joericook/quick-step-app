@@ -1,0 +1,410 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
+
+    font-family: 'RobotoRegular', Helvetica, Arial, sans-serif;
+    color: #56494c;
+    margin: 0;
+}
+
+/*Styling for class: .page*/
+.page {
+    width: 100%;
+    height: 100%;
+    background-color: #C1C1C1;
+    background-image: linear-gradient(to bottom, #c1c1c1, #a3a3a3);
+}
+
+/*Styling for all buttons and selections boxes*/
+.btn {
+    font-family: "RobotoRegular", "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #666666;
+    background-image: -webkit-linear-gradient(top, #666666, #111111);
+    background-image: -moz-linear-gradient(top, #666666, #111111);
+    background-image: -ms-linear-gradient(top, #666666, #111111);
+    background-image: -o-linear-gradient(top, #666666, #111111);
+    background-image: linear-gradient(to bottom, #666666, #111111);
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 2vw;
+    text-shadow: 0.2vw 0.2vw 0.3vw #666666;
+    color: #cccccc;
+    padding: 2vw 1vw 2vw 1vw;
+    border: solid #666666 0.2vw;
+    text-decoration: none;
+    font-size: 2.1vw;
+}
+
+    .btn:hover {
+        background: #999999;
+        background-image: -webkit-linear-gradient(top, #999999, #444444);
+        background-image: -moz-linear-gradient(top, #999999, #444444);
+        background-image: -ms-linear-gradient(top, #999999, #444444);
+        background-image: -o-linear-gradient(top, #999999, #444444);
+        background-image: linear-gradient(to bottom, #999999, #444444);
+        text-decoration: none;
+    }
+
+/*Styling for all range sliders*/
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 2vw 0;
+}
+
+    input[type=range]:focus {
+        outline: none;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 0.8vw;
+        cursor: pointer;
+        box-shadow: 0.15vw 0.15vw 0.15vw #000000, 0vw 0vw 0.15vw #0d0d0d;
+        background: #505050;
+        border-radius: 0.7vw;
+        border: 0.05vw solid #010101;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+        box-shadow: 0.15vw 0.15vw 0.15vw #000000, 0vw 0vw 0.15vw #0d0d0d;
+        border: 0.1vw solid #ff8c00;
+        height: 2.8vw;
+        width: 4vw;
+        border-radius: 0.9vw;
+        background: #ff8c00;
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -1vw;
+    }
+
+    input[type=range]:focus::-webkit-slider-runnable-track {
+        background: #5d5d5d;
+    }
+
+    input[type=range]::-moz-range-track {
+        width: 100%;
+        height: 0.8vw;
+        cursor: pointer;
+        box-shadow: 0.15vw 0.15vw 0.15vw #000000, 0vw 0vw 0.15vw #0d0d0d;
+        background: #505050;
+        border-radius: 0.7vw;
+        border: 0.02vw solid #010101;
+    }
+
+    input[type=range]::-moz-range-thumb {
+        box-shadow: 0.15vw 0.15vw 0.15vw #000000, 0vw 0vw 0.15vw #0d0d0d;
+        border: 0.1vw solid #ff8c00;
+        height: 2.8vw;
+        width: 4vw;
+        border-radius: 0.9vw;
+        background: #ff8c00;
+        cursor: pointer;
+    }
+
+    input[type=range]::-ms-track {
+        width: 100%;
+        height: 0.8vw;
+        cursor: pointer;
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+    }
+
+    input[type=range]::-ms-fill-lower {
+        background: #434343;
+        border: 0.02vw solid #010101;
+        border-radius: 0.8vw;
+        box-shadow: 0.15vw 0.15vw 0.15vw #000000, 0vw 0vw 0.15vw #0d0d0d;
+    }
+
+    input[type=range]::-ms-fill-upper {
+        background: #505050;
+        border: 0.02vw solid #010101;
+        border-radius: 0.8vw;
+        box-shadow: 0.15vw 0.15vw 0.15vw #000000, 0vw 0vw 0.15vw #0d0d0d;
+    }
+
+    input[type=range]::-ms-thumb {
+        box-shadow: 0.15vw 0.15vw 0.15vw #000000, 0vw 0vw 0.15vw #0d0d0d;
+        border: 0.15vw solid #ff8c00;
+        height: 2.8vw;
+        width: 4vw;
+        border-radius: 0.9vw;
+        background: #ff8c00;
+        cursor: pointer;
+        height: 2.8vw;
+    }
+
+    input[type=range]:focus::-ms-fill-lower {
+        background: #505050;
+    }
+
+    input[type=range]:focus::-ms-fill-upper {
+        background: #5d5d5d;
+    }
+
+/*Slider background*/
+input[type=range] {
+    background-color: rbga(0, 0, 0, 0);
+}
+
+/*Styling for dropdown menu*/
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; /* remove default arrow */
+}
+
+/*Container div for all subsections of GUI*/
+#surface {
+    width: 100%;
+    padding-bottom: 56.25%; /*Aspect ratio (width as percentage)*/
+}
+
+#content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+}
+/*---------------CONTENT BEGIN------------------*/
+
+/*Wrapper div used by background and top-level divs*/
+.wrapper {
+    position: relative; /*Keep proportions when resizing*/
+}
+
+#config {
+    /*background-color: #222222;*/
+    width: 100%;
+    height: 16%;
+}
+/*---------------CONFIG BEGIN------------------*/
+
+#transport {
+    /*background-color: #7ec0ee;*/
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+
+#bpmScreen {
+    background-color: #999999;
+    width: 15%;
+    height: 100%;
+    float: left;
+    border-radius: 2vw;
+}
+
+#swingScreen {
+    background-color: #999999;
+    width: 15%;
+    height: 100%;
+    float: left;
+    border-radius: 2vw;
+}
+
+#pageSwitch {
+    /*background-color: #7ec0ee;*/
+    width: 10%;
+    height: 100%;
+    float: left;
+}
+
+#master {
+    /*background-color: #551a8b;*/
+    width: 18%;
+    height: 100%;
+    float: left;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+#kit {
+    /*background-color: #ffb347;*/
+    width: 10%;
+    height: 100%;
+    float: left;
+}
+
+#file {
+    /*background-color: #98fb98;*/
+    width: 10%;
+    height: 100%;
+    float: left;
+}
+/*---------------CONFIG END------------------*/
+
+#sequencer {
+    /*background-color: #0000ff;*/
+    width: 100%;
+    height: 84%;
+}
+/*---------------SEQUENCER BEGIN------------------*/
+
+#labels {
+    /*background-color: #006ccf;*/
+    width: 15%;
+    height: 100%;
+    float: left;
+}
+
+    /*---------------LABELS BEGIN------------------*/
+
+    #labels ul {
+        font-size: 2.2vw;
+        font-weight: bold;
+        width: 93%;
+        padding-left: 0%;
+        padding-top: 1.4vw;
+        text-shadow: -0.07vw -0.07vw 0.07vw #fff, 0.07vw 0.07vw 0.07vw #000; /*Embossed effect for text*/
+        opacity: 0.7;
+        font: 'Museo700';
+    }
+
+    #labels li {
+        height: 5.1vw;
+        padding-left: 0%;
+        text-align: right
+    }
+
+/*Removes bullet points from all unordered lists*/
+.listItems {
+    list-style-type: none;
+}
+
+/*---------------LABELS END------------------*/
+
+#steps {
+    /*background-color: #ff00de;*/
+    width: 85%;
+    height: 100%;
+    float: left;
+}
+/*---------------STEPS BEGIN------------------*/
+
+#stepLayout {
+    width: 100%;
+    height: 90%;
+    /*background-color: #00ff00;*/
+    float: left;
+}
+
+    /*---------------STEP LAYOUT BEGIN------------------*/
+
+    #stepLayout table {
+        display: table-cell;
+        padding-right: 1%;
+    }
+
+    #stepLayout td {
+        font-size: 1vw; /*required for the table cell's responsive scaling*/
+        border: 0.3vw solid;
+        width: 5em;
+        height: 4.2em; /*em is relative to the font-size of the element (2em means 2 times the size of the current font)*/
+        color: #6d6d6d;
+        background-color: #847E89;
+        padding: 0%;
+        border-radius: 10%;
+        margin-bottom: 0;
+    }
+
+.stepAnim {
+    background-color: #ff8c00 !important; /*!important overides default background color*/
+    opacity: 0.6;
+}
+
+.stepOn {
+    background-color: #00ECE8 !important;
+}
+
+/*---------------STEP LAYOUT END------------------*/
+
+/*---------------CONTROLS BEGIN------------------*/
+
+#controls table {
+    display: table-cell;
+    padding-right: 1%;
+}
+
+#controls td {
+    font-size: 1vw; /*required for the table cell's responsive scaling*/
+    border: 0.3vw solid;
+    width: 84em;
+    height: 4.2em; /*em is relative to the font-size of the element (2em means 2 times the size of the current font)*/
+    color: #6d6d6d;
+    background-color: #847E89;
+    padding: 0%;
+    border-radius: 8%;
+    margin-bottom: 0;
+}
+
+/*---------------CONTROLS END------------------*/
+
+/*---------------LEGEND BEGIN------------------*/
+.legend ul {
+    text-align: left;
+    padding: 0;
+    margin-top: 0;
+}
+
+.legend li {
+    float: left;
+    width: 4.26vw;
+    margin-left: 0.9vw;
+}
+
+#stepLegend {
+    /*background-color: #ffff00;*/
+    width: 100%;
+    height: 5%;
+    float: left;
+    padding-top: 0.1vw;
+}
+
+    #stepLegend ul {
+        font-size: 1.8vw;
+    }
+
+#beatLegend {
+    /*background-color: #ff69b4;*/
+    width: 100%;
+    height: 5%;
+    float: left;
+}
+
+    #beatLegend ul {
+        font-size: 2vw;
+        margin-bottom: 0;
+        padding-bottom: 2vw;
+    }
+
+#controlsLegend {
+    /*background-color: #ff69b4;*/
+    width: 100%;
+    height: 5%;
+    float: left;
+}
+
+    #controlsLegend ul {
+        font-size: 2vw;
+        margin-bottom: 0;
+        padding-bottom: 2vw;
+    }
+
+/*---------------LEGEND END------------------*/
+
+/*---------------STEPS END------------------*/
+
+/*---------------SEQUENCER END------------------*/
+
+
+

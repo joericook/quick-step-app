@@ -1,0 +1,506 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+        <script type="text/javascript" src="scripts/jQuery.js"></script>
+        <script type="text/javascript" src="scripts/mcad.js"></script>
+        <script type="text/javascript" src="scripts/index.js"></script>
+        <title>QuickStepApp</title>
+    </head>
+    <body>
+        <div id="surface" class="wrapper">
+            <div id="content">
+                <div id="page1" class="wrapper page">
+                    <!-- CONFIG START -->
+                    <div id="config" class="wrapper">
+                        <!-- TRANSPORT -->
+                        <div id="transport" class="wrapper">
+                            <button id="playButton" class="btn" style="width: 50%; height: 100%; float: left;">PLAY</button>
+                            <button id="stopButton" class="btn" style="width: 50%; height: 100%; float: left;">STOP</button>
+                        </div>
+                        <!-- BPM SCREEN -->
+                        <div id="bpmScreen" class="wrapper">
+
+                            <button id="tempoDown" class="btn" style="width: 25%; height: 100%; float: left; padding: 0%;"><</button>
+                            <p id="tempoText" style="width: 50%; height: 70%; float: left; text-align: center; font-size: 2.3vw; margin-top: 1.5vw; margin-bottom: 0;">120 BPM</p>
+                            <button id="tempoUp" class="btn" style="width: 25%; height: 100%; float: left; padding: 0%; margin-top: 0;">></button>
+
+                        </div>
+                        <!-- SWING SCREEN -->
+                        <div id="swingScreen" class="wrapper">
+                            <button id="swingDown" class="btn" style="width: 25%; height: 100%; float: left; padding: 0%;"><</button>
+                            <p id="swingText" style="width: 50%; height: 70%; float: left; text-align: center; font-size: 2.1vw; margin-top: 1.5vw; margin-bottom: 0;">0% SWING</p>
+                            <button id="swingUp" class="btn" style="width: 25%; height: 100%; float: left; padding: 0%;">></button>
+
+                        </div>
+                        <!-- PAGE SWITCH -->
+                        <div id="pageSwitch" class="wrapper">
+                            <button data-navPage="page2" id="FXSwitchButton" class="btn" style="width: 100%; height: 100%; float: left;">FX</button>
+                        </div>
+                        <!-- MASTER VOLUME -->
+                        <div id="master" class="wrapper">
+                            <p style="margin-left: 0.85vw; margin-right: auto; margin-top: 1.5vw; margin-bottom: 0vw;  font-size: 1.8vw;">MASTER VOLUME</p>
+                            <input type="range" min="0.0" max="1.0" step="0.02" value="0.8" id="masterVolume" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;">
+                        </div>
+                        <!-- KIT -->
+                        <div id="kit" class="wrapper">
+                            <select id="kitSelect" class="btn" style="width: 100%; height: 100%; text-align-last:center;">
+                                <option selected>909</option>
+                                <option>808</option>
+                                <option>707</option>
+                            </select>
+                        </div>
+                        <!-- FILE -->
+                        <div id="file" class="wrapper">
+                            <button id="clearButton" class="btn" style="width: 100%; height: 100%; float: left;">CLEAR</button>
+                        </div>
+                    </div>
+                    <!-- CONFIG END -->
+                    <!-- SEQUENCER START -->
+                    <div id="sequencer" class="wrapper">
+
+                        <!-- LABELS START -->
+                        <div id="labels" class="wrapper">
+                            <ul class="listItems">
+                                <li>Kick</li>
+                                <li>Snare</li>
+                                <li>Clap</li>
+                                <li>Closed Hihat</li>
+                                <li>Open Hihat</li>
+                                <!--<li>Ride</li>-->
+                                <li>Crash</li>
+                                <!--<li>Low Tom</li>-->
+                                <li>Mid Tom</li>
+                                <li>Hi Tom</li>
+                            </ul>
+                        </div>
+
+                        <!-- STEPS START -->
+                        <div id="steps" class="wrapper">
+                            <!--Top Legend-->
+                            <div id="stepLegend" class="wrapper legend">
+                                <ul class="listItems">
+                                    <li>1</li>
+                                    <li>2</li>
+                                    <li>3</li>
+                                    <li>4</li>
+                                    <li>5</li>
+                                    <li>6</li>
+                                    <li>7</li>
+                                    <li>8</li>
+                                    <li>9</li>
+                                    <li>10</li>
+                                    <li>11</li>
+                                    <li>12</li>
+                                    <li>13</li>
+                                    <li>14</li>
+                                    <li>15</li>
+                                    <li>16</li>
+                                </ul>
+                            </div>
+
+                            <div id="stepLayout" class="wrapper">
+                                <table>
+                                    <tbody>
+                                        <!-- Kick -->
+                                        <tr id="kick" data-channel="kick">
+                                            <td data-step="0">&nbsp;</td>
+                                            <td data-step="1">&nbsp;</td>
+                                            <td data-step="2">&nbsp;</td>
+                                            <td data-step="3">&nbsp;</td>
+                                            <td data-step="4">&nbsp;</td>
+                                            <td data-step="5">&nbsp;</td>
+                                            <td data-step="6">&nbsp;</td>
+                                            <td data-step="7">&nbsp;</td>
+                                            <td data-step="8">&nbsp;</td>
+                                            <td data-step="9">&nbsp;</td>
+                                            <td data-step="10">&nbsp;</td>
+                                            <td data-step="11">&nbsp;</td>
+                                            <td data-step="12">&nbsp;</td>
+                                            <td data-step="13">&nbsp;</td>
+                                            <td data-step="14">&nbsp;</td>
+                                            <td data-step="15">&nbsp;</td>
+                                        </tr>
+                                        <!-- Snare -->
+                                        <tr id="snare" data-channel="snare">
+                                            <td data-step="0">&nbsp;</td>
+                                            <td data-step="1">&nbsp;</td>
+                                            <td data-step="2">&nbsp;</td>
+                                            <td data-step="3">&nbsp;</td>
+                                            <td data-step="4">&nbsp;</td>
+                                            <td data-step="5">&nbsp;</td>
+                                            <td data-step="6">&nbsp;</td>
+                                            <td data-step="7">&nbsp;</td>
+                                            <td data-step="8">&nbsp;</td>
+                                            <td data-step="9">&nbsp;</td>
+                                            <td data-step="10">&nbsp;</td>
+                                            <td data-step="11">&nbsp;</td>
+                                            <td data-step="12">&nbsp;</td>
+                                            <td data-step="13">&nbsp;</td>
+                                            <td data-step="14">&nbsp;</td>
+                                            <td data-step="15">&nbsp;</td>
+                                        </tr>
+                                        <!-- Clap -->
+                                        <tr id="clap" data-channel="clap">
+                                            <td data-step="0">&nbsp;</td>
+                                            <td data-step="1">&nbsp;</td>
+                                            <td data-step="2">&nbsp;</td>
+                                            <td data-step="3">&nbsp;</td>
+                                            <td data-step="4">&nbsp;</td>
+                                            <td data-step="5">&nbsp;</td>
+                                            <td data-step="6">&nbsp;</td>
+                                            <td data-step="7">&nbsp;</td>
+                                            <td data-step="8">&nbsp;</td>
+                                            <td data-step="9">&nbsp;</td>
+                                            <td data-step="10">&nbsp;</td>
+                                            <td data-step="11">&nbsp;</td>
+                                            <td data-step="12">&nbsp;</td>
+                                            <td data-step="13">&nbsp;</td>
+                                            <td data-step="14">&nbsp;</td>
+                                            <td data-step="15">&nbsp;</td>
+                                        </tr>
+                                        <!-- Closed Hihat -->
+                                        <tr id="closedHihat" data-channel="closedHihat">
+                                            <td data-step="0">&nbsp;</td>
+                                            <td data-step="1">&nbsp;</td>
+                                            <td data-step="2">&nbsp;</td>
+                                            <td data-step="3">&nbsp;</td>
+                                            <td data-step="4">&nbsp;</td>
+                                            <td data-step="5">&nbsp;</td>
+                                            <td data-step="6">&nbsp;</td>
+                                            <td data-step="7">&nbsp;</td>
+                                            <td data-step="8">&nbsp;</td>
+                                            <td data-step="9">&nbsp;</td>
+                                            <td data-step="10">&nbsp;</td>
+                                            <td data-step="11">&nbsp;</td>
+                                            <td data-step="12">&nbsp;</td>
+                                            <td data-step="13">&nbsp;</td>
+                                            <td data-step="14">&nbsp;</td>
+                                            <td data-step="15">&nbsp;</td>
+                                        </tr>
+                                        <!-- Open Hihat -->
+                                        <tr id="openHihat" data-channel="openHihat">
+                                            <td data-step="0">&nbsp;</td>
+                                            <td data-step="1">&nbsp;</td>
+                                            <td data-step="2">&nbsp;</td>
+                                            <td data-step="3">&nbsp;</td>
+                                            <td data-step="4">&nbsp;</td>
+                                            <td data-step="5">&nbsp;</td>
+                                            <td data-step="6">&nbsp;</td>
+                                            <td data-step="7">&nbsp;</td>
+                                            <td data-step="8">&nbsp;</td>
+                                            <td data-step="9">&nbsp;</td>
+                                            <td data-step="10">&nbsp;</td>
+                                            <td data-step="11">&nbsp;</td>
+                                            <td data-step="12">&nbsp;</td>
+                                            <td data-step="13">&nbsp;</td>
+                                            <td data-step="14">&nbsp;</td>
+                                            <td data-step="15">&nbsp;</td>
+                                        </tr>
+                                        <!-- Ride
+                                    <tr>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                    </tr>
+                                    <!-- Crash -->
+                                        <tr id="crash" data-channel="crash">
+                                            <td data-step="0">&nbsp;</td>
+                                            <td data-step="1">&nbsp;</td>
+                                            <td data-step="2">&nbsp;</td>
+                                            <td data-step="3">&nbsp;</td>
+                                            <td data-step="4">&nbsp;</td>
+                                            <td data-step="5">&nbsp;</td>
+                                            <td data-step="6">&nbsp;</td>
+                                            <td data-step="7">&nbsp;</td>
+                                            <td data-step="8">&nbsp;</td>
+                                            <td data-step="9">&nbsp;</td>
+                                            <td data-step="10">&nbsp;</td>
+                                            <td data-step="11">&nbsp;</td>
+                                            <td data-step="12">&nbsp;</td>
+                                            <td data-step="13">&nbsp;</td>
+                                            <td data-step="14">&nbsp;</td>
+                                            <td data-step="15">&nbsp;</td>
+                                        </tr>
+                                        <!-- Low Tom
+                                    <tr>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                      <td>&nbsp;</td>
+                                    </tr>
+                                    <!-- Mid Tom -->
+                                        <tr id="midTom" data-channel="midTom">
+                                            <td data-step="0">&nbsp;</td>
+                                            <td data-step="1">&nbsp;</td>
+                                            <td data-step="2">&nbsp;</td>
+                                            <td data-step="3">&nbsp;</td>
+                                            <td data-step="4">&nbsp;</td>
+                                            <td data-step="5">&nbsp;</td>
+                                            <td data-step="6">&nbsp;</td>
+                                            <td data-step="7">&nbsp;</td>
+                                            <td data-step="8">&nbsp;</td>
+                                            <td data-step="9">&nbsp;</td>
+                                            <td data-step="10">&nbsp;</td>
+                                            <td data-step="11">&nbsp;</td>
+                                            <td data-step="12">&nbsp;</td>
+                                            <td data-step="13">&nbsp;</td>
+                                            <td data-step="14">&nbsp;</td>
+                                            <td data-step="15">&nbsp;</td>
+                                        </tr>
+                                        <!-- Hi Tom -->
+                                        <tr id="hiTom" data-channel="hiTom">
+                                            <td data-step="0">&nbsp;</td>
+                                            <td data-step="1">&nbsp;</td>
+                                            <td data-step="2">&nbsp;</td>
+                                            <td data-step="3">&nbsp;</td>
+                                            <td data-step="4">&nbsp;</td>
+                                            <td data-step="5">&nbsp;</td>
+                                            <td data-step="6">&nbsp;</td>
+                                            <td data-step="7">&nbsp;</td>
+                                            <td data-step="8">&nbsp;</td>
+                                            <td data-step="9">&nbsp;</td>
+                                            <td data-step="10">&nbsp;</td>
+                                            <td data-step="11">&nbsp;</td>
+                                            <td data-step="12">&nbsp;</td>
+                                            <td data-step="13">&nbsp;</td>
+                                            <td data-step="14">&nbsp;</td>
+                                            <td data-step="15">&nbsp;</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--Bottom Legend-->
+                            <div id="beatLegend" class="wrapper legend">
+                                <ul class="listItems">
+                                    <li>1</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>2</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>3</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>4</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- SEQUENCER END -->
+                </div>  <!-- Page1 Close -->
+                <!----------------------------- PAGE BREAK ---------------------------->
+                <div id="page2" class="wrapper page">
+                    <!-- CONFIG START -->
+                    <div id="config" class="wrapper">
+                        <!-- TRANSPORT -->
+                        <div id="transport" class="wrapper">
+                            <button id="playButton2" class="btn" style="width: 50%; height: 100%; float: left;">PLAY</button>
+                            <button id="stopButton2" class="btn" style="width: 50%; height: 100%; float: left;">STOP</button>
+                        </div>
+                        <!-- BPM SCREEN -->
+                        <div id="bpmScreen" class="wrapper">
+
+                            <button id="tempoDown2" class="btn" style="width: 25%; height: 100%; float: left; padding: 0%;"><</button>
+                            <p id="tempoText2" style="width: 50%; height: 70%; float: left; text-align: center; font-size: 2.3vw; margin-top: 1.5vw; margin-bottom: 0;">120 BPM</p>
+                            <button id="tempoUp2" class="btn" style="width: 25%; height: 100%; float: left; padding: 0%; margin-top: 0;">></button>
+
+                        </div>
+                        <!-- SWING SCREEN -->
+                        <div id="swingScreen" class="wrapper">
+                            <button id="swingDown2" class="btn" style="width: 25%; height: 100%; float: left; padding: 0%;"><</button>
+                            <p id="swingText2" style="width: 50%; height: 70%; float: left; text-align: center; font-size: 2.1vw; margin-top: 1.5vw; margin-bottom: 0;">0% SWING</p>
+                            <button id="swingUp2" class="btn" style="width: 25%; height: 100%; float: left; padding: 0%;">></button>
+
+                        </div>
+                        <!-- PAGE SWITCH -->
+                        <div id="pageSwitch" class="wrapper">
+                            <button data-navPage="page1" id="patternSwitchButton" class="btn" style="width: 100%; height: 100%; float: left;">PATTERN</button>
+                        </div>
+                        <!-- MASTER VOLUME -->
+                        <div id="master" class="wrapper">
+                            <p style="margin-left: 0.85vw; margin-right: auto; margin-top: 1.5vw; margin-bottom: 0vw;  font-size: 1.8vw;">MASTER VOLUME</p>
+                            <input type="range" min="0.0" max="1.0" step="0.02" value="0.8" id="masterVolume2" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;">
+                        </div>
+                        <!-- KIT -->
+                        <div id="kit" class="wrapper">
+                            <select id="kitSelect2" class="btn" style="width: 100%; height: 100%; text-align-last:center;">
+                                <option selected>909</option>
+                                <option>808</option>
+                                <option>707</option>
+                            </select>
+                        </div>
+                        <!-- FILE -->
+                        <div id="file" class="wrapper">
+                            <button id="clearButton2" class="btn" style="width: 100%; height: 100%; float: left;">CLEAR</button>
+                        </div>
+                    </div>
+                    <!-- CONFIG END -->
+                    <!-- SEQUENCER START -->
+                    <div id="sequencer" class="wrapper">
+
+                        <!-- LABELS START -->
+                        <div id="labels" class="wrapper">
+                            <ul class="listItems">
+                                <li>Kick</li>
+                                <li>Snare</li>
+                                <li>Clap</li>
+                                <li>Closed Hihat</li>
+                                <li>Open Hihat</li>
+                                <!--<li>Ride</li>-->
+                                <li>Crash</li>
+                                <!--<li>Low Tom</li>-->
+                                <li>Mid Tom</li>
+                                <li>Hi Tom</li>
+                            </ul>
+                        </div>
+
+                        <!-- STEPS START -->
+                        <div id="steps" class="wrapper">
+                            <!--Top Legend-->
+                            <div id="stepLegend" class="wrapper legend">
+                                <ul class="listItems">
+                                    <li>1</li>
+                                    <li>2</li>
+                                    <li>3</li>
+                                    <li>4</li>
+                                    <li>5</li>
+                                    <li>6</li>
+                                    <li>7</li>
+                                    <li>8</li>
+                                    <li>9</li>
+                                    <li>10</li>
+                                    <li>11</li>
+                                    <li>12</li>
+                                    <li>13</li>
+                                    <li>14</li>
+                                    <li>15</li>
+                                    <li>16</li>
+                                </ul>
+                            </div>
+
+                            <div id="controls" class="wrapper">
+                                <table>
+                                    <tbody>
+                                        <!-- Kick -->
+                                        <tr>
+                                            <td><input type="range" id="kickVolume" min="0.0" max="1.0" step="0.01" value="0.8" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="kickPitch" min="-1200" max="1200" step="24" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="kickPan" min="-1.0" max="1.0" step="0.02" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                        </tr>
+                                        <!-- Snare -->
+                                        <tr>
+                                            <td><input type="range" id="snareVolume" min="0.0" max="1.0" step="0.01" value="0.8" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="snarePitch" min="-1200" max="1200" step="24" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="snarePan" min="-1.0" max="1.0" step="0.02" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                        </tr>
+                                        <!-- Clap -->
+                                        <tr>
+                                            <td><input type="range" id="clapVolume" min="0.0" max="1.0" step="0.01" value="0.8" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="clapPitch" min="-1200" max="1200" step="24" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="clapPan" min="-1.0" max="1.0" step="0.02" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                        </tr>
+                                        <!-- Closed Hihat -->
+                                        <tr>
+                                            <td><input type="range" id="closedHihatVolume" min="0.0" max="1.0" step="0.01" value="0.8" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="closedHihatPitch" min="-1200" max="1200" step="24" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="closedHihatPan" min="-1.0" max="1.0" step="0.02" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                        </tr>
+                                        <!-- Open Hihat -->
+                                        <tr>
+                                            <td><input type="range" id="openHihatVolume" min="0.0" max="1.0" step="0.01" value="0.8" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="openHihatPitch" min="-1200" max="1200" step="24" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="openHihatPan" min="-1.0" max="1.0" step="0.02" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                        </tr>
+                                        <!-- Crash -->
+                                        <tr>
+                                            <td><input type="range" id="crashVolume" min="0.0" max="1.0" step="0.01" value="0.8" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="crashPitch" min="-1200" max="1200" step="24" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="crashPan" min="-1.0" max="1.0" step="0.02" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                        </tr>
+                                        <!-- Mid Tom -->
+                                        <tr>
+                                            <td><input type="range" id="midTomVolume" min="0.0" max="1.0" step="0.01" value="0.8" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="midTomPitch" min="-1200" max="1200" step="24" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="midTomPan" min="-1.0" max="1.0" step="0.02" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                        </tr>
+                                        <!-- Hi Tom -->
+                                        <tr>
+                                            <td><input type="range" id="hiTomVolume" min="0.0" max="1.0" step="0.01" value="0.8" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="hiTomPitch" min="-1200" max="1200" step="24" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                            <td><input type="range" id="hiTomPan" min="-1.0" max="1.0" step="0.02" style="margin-left: auto; margin-top: 0vw; margin-bottom: 0vw;"></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--Bottom Legend-->
+                            <div id="controlsLegend" class="wrapper legend">
+                                <ul class="listItems">
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VOLUME</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;&nbsp;&nbsp;PITCH</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;&nbsp;&nbsp;&nbsp;PANNING</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- SEQUENCER END -->
+                </div>  <!-- Page2 Close -->
+            </div>  <!-- Content Close -->
+        </div>  <!-- Surface Close -->   
+        
+    </body>
+</html>
